@@ -1,0 +1,125 @@
+[gd_scene load_steps=17 format=3 uid="uid://d33j7xixk1g38"]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_22s56"]
+[ext_resource type="Shader" path="res://scenes/fx.gdshader" id="1_hrxl7"]
+[ext_resource type="FontFile" uid="uid://bsl346i62og0p" path="res://fonts/Brunson.ttf" id="2_6ff2e"]
+[ext_resource type="Script" path="res://scenes/main_camera.gd" id="2_n5mm0"]
+[ext_resource type="Texture2D" uid="uid://bttingm14pgjj" path="res://sprites/grass.png" id="2_x37w6"]
+[ext_resource type="Script" path="res://scenes/lbl_gameover.gd" id="3_dtqu1"]
+[ext_resource type="Script" path="res://scenes/grass.gd" id="3_v3d3f"]
+[ext_resource type="PackedScene" path="res://scenes/shaker.tscn" id="4_6t3fy"]
+[ext_resource type="Script" path="res://scenes/level_bar.gd" id="4_bpoox"]
+[ext_resource type="Texture2D" uid="uid://dgswnal4gpmke" path="res://sprites/level_bar1.png" id="4_xff7f"]
+[ext_resource type="Texture2D" uid="uid://bjs7asi3xoxxv" path="res://sprites/level_bar2.png" id="5_8hwpj"]
+[ext_resource type="PackedScene" uid="uid://bdttbawe43m2d" path="res://scenes/player.tscn" id="6_ffk3w"]
+[ext_resource type="PackedScene" uid="uid://dhdi1r5xq0ap8" path="res://scenes/out_r.tscn" id="10_6bxjx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0qvyu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_xff7f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ffde"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_8hwpj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x61us"]
+shader = ExtResource("1_hrxl7")
+shader_parameter/amount = 0.2
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_22s56")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="lbl_gameover" type="Label" parent="CanvasLayer"]
+offset_right = 1151.0
+offset_bottom = 568.0
+theme_override_fonts/font = ExtResource("2_6ff2e")
+theme_override_font_sizes/font_size = 96
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_dtqu1")
+
+[node name="lbl_gameover2" type="Label" parent="CanvasLayer/lbl_gameover"]
+modulate = Color(0, 0, 0, 0.552941)
+z_index = -999
+layout_mode = 0
+offset_left = 10.0
+offset_top = 14.0
+offset_right = 1161.0
+offset_bottom = 582.0
+theme_override_fonts/font = ExtResource("2_6ff2e")
+theme_override_font_sizes/font_size = 96
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_dtqu1")
+
+[node name="level_bar" type="Node2D" parent="CanvasLayer"]
+position = Vector2(577, 38)
+script = ExtResource("4_bpoox")
+
+[node name="bar" type="AnimatedSprite2D" parent="CanvasLayer/level_bar"]
+position = Vector2(-576, 0)
+scale = Vector2(1e-05, 1)
+sprite_frames = SubResource("SpriteFrames_0qvyu")
+offset = Vector2(576, 0)
+
+[node name="frame" type="AnimatedSprite2D" parent="CanvasLayer/level_bar"]
+sprite_frames = SubResource("SpriteFrames_8ffde")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("3_v3d3f")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(0, 810)
+
+[node name="grass" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(572, 322)
+scale = Vector2(3, 3)
+texture = ExtResource("2_x37w6")
+region_rect = Rect2(2.81567, -2.62573, 477.297, 276.715)
+
+[node name="FX" type="ColorRect" parent="."]
+z_index = 4096
+material = SubResource("ShaderMaterial_x61us")
+offset_left = -97.0
+offset_top = -92.0
+offset_right = 1257.0
+offset_bottom = 716.0
+
+[node name="Shaker" parent="." instance=ExtResource("4_6t3fy")]
+
+[node name="mainCamera" type="Camera2D" parent="."]
+anchor_mode = 0
+script = ExtResource("2_n5mm0")
+
+[node name="player" parent="." instance=ExtResource("6_ffk3w")]
+
+[node name="player2" parent="." instance=ExtResource("6_ffk3w")]
+modulate = Color(0, 0, 0, 0.552941)
+z_index = -10
+z_as_relative = false
+position = Vector2(563, 612)
+shadow = true
+
+[node name="out_R" parent="." instance=ExtResource("10_6bxjx")]
+position = Vector2(1210, 8)
+
+[node name="out_R2" parent="." instance=ExtResource("10_6bxjx")]
+position = Vector2(-98, 8)

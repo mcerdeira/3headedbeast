@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://gqbhurr7x3wm"]
+
+[ext_resource type="PackedScene" uid="uid://c55uxewsuxtnx" path="res://gltf/spikeRoller.gltf.glb" id="1_8fgo6"]
+[ext_resource type="Script" path="res://scenes/spikes.gd" id="1_f8msx"]
+[ext_resource type="Script" path="res://scenes/spike3d.gd" id="1_pgdca"]
+[ext_resource type="Shader" path="res://scenes/hit.gdshader" id="2_c30ef"]
+[ext_resource type="FontFile" uid="uid://bsl346i62og0p" path="res://fonts/Brunson.ttf" id="5_kesi3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mqjsg"]
+resource_local_to_scene = true
+shader = ExtResource("2_c30ef")
+shader_parameter/on = false
+shader_parameter/color = Color(1, 1, 1, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_l46it"]
+viewport_path = NodePath("CanvasLayer")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pxet3"]
+size = Vector2(304, 140)
+
+[node name="Spikes" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_f8msx")
+
+[node name="shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.552941)
+material = SubResource("ShaderMaterial_mqjsg")
+position = Vector2(18, 32)
+rotation = 1.5708
+texture = SubResource("ViewportTexture_l46it")
+
+[node name="sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_mqjsg")
+rotation = 1.5708
+texture = SubResource("ViewportTexture_l46it")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(50, 50)
+shape = SubResource("RectangleShape2D_pxet3")
+
+[node name="CanvasLayer" type="SubViewport" parent="."]
+own_world_3d = true
+transparent_bg = true
+
+[node name="Node3D" type="Node3D" parent="CanvasLayer"]
+script = ExtResource("1_pgdca")
+
+[node name="Camera3D" type="Camera3D" parent="CanvasLayer/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.262549, 0.913625, 2.12867)
+current = true
+
+[node name="spikeRoller_gltf" parent="CanvasLayer/Node3D" instance=ExtResource("1_8fgo6")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CanvasLayer/Node3D"]
+
+[node name="life" type="Label" parent="."]
+offset_left = 2.0
+offset_top = -20.0
+offset_right = 98.0
+offset_bottom = 88.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_kesi3")
+theme_override_font_sizes/font_size = 96
+text = "100"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

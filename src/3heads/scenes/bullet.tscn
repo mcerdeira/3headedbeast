@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://ca7h4xckrk2ar"]
+
+[ext_resource type="Script" path="res://scenes/bullet.gd" id="1_g525b"]
+[ext_resource type="Texture2D" uid="uid://bqebr0afc2mdx" path="res://sprites/bullet3.png" id="2_u1lpp"]
+[ext_resource type="Texture2D" uid="uid://dpft6isg2seyk" path="res://sprites/bullet2.png" id="3_pdts0"]
+[ext_resource type="Texture2D" uid="uid://bgbubqcbs4yor" path="res://sprites/bullet1.png" id="4_q4cpb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jcdvp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_u1lpp")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_pdts0")
+}],
+"loop": true,
+"name": &"green",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_q4cpb")
+}],
+"loop": true,
+"name": &"purple",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t2dyt"]
+
+[node name="Bullet" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_g525b")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -33)
+sprite_frames = SubResource("SpriteFrames_jcdvp")
+animation = &"purple"
+
+[node name="sprite2" type="AnimatedSprite2D" parent="sprite"]
+modulate = Color(0, 0, 0, 0.552941)
+z_index = -99
+z_as_relative = false
+position = Vector2(-20, 16)
+sprite_frames = SubResource("SpriteFrames_jcdvp")
+animation = &"purple"
+
+[node name="collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_t2dyt")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

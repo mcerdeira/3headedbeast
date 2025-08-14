@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3shn52hu301r"]
+
+[ext_resource type="Script" path="res://scenes/gun.gd" id="1_e3meg"]
+[ext_resource type="Texture2D" uid="uid://b6kyj7c6tjr8b" path="res://sprites/blockD_spr_0.png" id="2_33l6d"]
+[ext_resource type="Texture2D" uid="uid://dmjx5tl5e5g1i" path="res://sprites/blockA_spr_0.png" id="2_nwtbf"]
+[ext_resource type="Texture2D" uid="uid://uu2xc5eng3l7" path="res://sprites/blockB_spr_0.png" id="3_4op8u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_82cc0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dc6kg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_33l6d")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4op8u")
+}],
+"loop": true,
+"name": &"green",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nwtbf")
+}],
+"loop": true,
+"name": &"purple",
+"speed": 5.0
+}]
+
+[node name="gun" type="Area2D"]
+position = Vector2(0, -65)
+script = ExtResource("1_e3meg")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_82cc0")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dc6kg")
+animation = &"purple"
