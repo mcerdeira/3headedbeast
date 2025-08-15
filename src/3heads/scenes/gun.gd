@@ -69,21 +69,3 @@ func shoot():
 			bullet.set_color($sprite.animation)
 			bullet.dmg = 50
 			get_parent().get_parent().add_child(bullet)
-	
-func goright():
-	if position == pos_center:
-		goto_position = pos_right
-	elif position == pos_left:
-		goto_position = pos_center
-		get_parent().main_kind = kind
-	elif position == pos_right:
-		goto_position = pos_left
-	
-func goleft():
-	if position == pos_center:
-		goto_position = pos_left
-	elif position == pos_left:
-		goto_position = pos_right
-	elif position == pos_right:
-		goto_position = pos_center
-		get_parent().main_kind = kind

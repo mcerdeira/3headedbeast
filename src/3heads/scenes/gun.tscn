@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3shn52hu301r"]
+[gd_scene load_steps=10 format=3 uid="uid://d3shn52hu301r"]
 
 [ext_resource type="Script" path="res://scenes/gun.gd" id="1_e3meg"]
 [ext_resource type="Texture2D" uid="uid://b6kyj7c6tjr8b" path="res://sprites/blockD_spr_0.png" id="2_33l6d"]
 [ext_resource type="Texture2D" uid="uid://dmjx5tl5e5g1i" path="res://sprites/blockA_spr_0.png" id="2_nwtbf"]
 [ext_resource type="Texture2D" uid="uid://uu2xc5eng3l7" path="res://sprites/blockB_spr_0.png" id="3_4op8u"]
+[ext_resource type="Texture2D" uid="uid://d3vxoeqcmis5w" path="res://sprites/blockE_spr_0.png" id="3_fuv4e"]
+[ext_resource type="Texture2D" uid="uid://m6sefjeeqls7" path="res://sprites/blockC_spr_0.png" id="5_le1td"]
+[ext_resource type="Texture2D" uid="uid://cjc8ropnydbab" path="res://sprites/blockF_spr_0.png" id="6_43m0m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_82cc0"]
 
@@ -15,6 +18,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_fuv4e")
+}],
+"loop": true,
+"name": &"cyan",
 "speed": 5.0
 }, {
 "frames": [{
@@ -32,6 +43,22 @@ animations = [{
 "loop": true,
 "name": &"purple",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_43m0m")
+}],
+"loop": true,
+"name": &"red",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_le1td")
+}],
+"loop": true,
+"name": &"yellow",
+"speed": 5.0
 }]
 
 [node name="gun" type="Area2D"]
@@ -43,4 +70,4 @@ shape = SubResource("CircleShape2D_82cc0")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dc6kg")
-animation = &"purple"
+animation = &"cyan"

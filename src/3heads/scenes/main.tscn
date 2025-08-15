@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d33j7xixk1g38"]
+[gd_scene load_steps=18 format=3 uid="uid://d33j7xixk1g38"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_22s56"]
 [ext_resource type="Shader" path="res://scenes/fx.gdshader" id="1_hrxl7"]
@@ -6,13 +6,12 @@
 [ext_resource type="Script" path="res://scenes/main_camera.gd" id="2_n5mm0"]
 [ext_resource type="Texture2D" uid="uid://bttingm14pgjj" path="res://sprites/grass.png" id="2_x37w6"]
 [ext_resource type="Script" path="res://scenes/lbl_gameover.gd" id="3_dtqu1"]
-[ext_resource type="Script" path="res://scenes/grass.gd" id="3_v3d3f"]
-[ext_resource type="PackedScene" path="res://scenes/shaker.tscn" id="4_6t3fy"]
+[ext_resource type="PackedScene" uid="uid://bix47by45g66p" path="res://scenes/shaker.tscn" id="4_6t3fy"]
 [ext_resource type="Script" path="res://scenes/level_bar.gd" id="4_bpoox"]
 [ext_resource type="Texture2D" uid="uid://dgswnal4gpmke" path="res://sprites/level_bar1.png" id="4_xff7f"]
 [ext_resource type="Texture2D" uid="uid://bjs7asi3xoxxv" path="res://sprites/level_bar2.png" id="5_8hwpj"]
-[ext_resource type="PackedScene" uid="uid://bdttbawe43m2d" path="res://scenes/player.tscn" id="6_ffk3w"]
-[ext_resource type="PackedScene" uid="uid://dhdi1r5xq0ap8" path="res://scenes/out_r.tscn" id="10_6bxjx"]
+[ext_resource type="Script" path="res://scenes/player.gd" id="11_3l6g6"]
+[ext_resource type="Texture2D" uid="uid://gh6jui078jqu" path="res://sprites/char_spr_0.png" id="11_7waim"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0qvyu"]
 animations = [{
@@ -40,8 +39,27 @@ animations = [{
 shader = ExtResource("1_hrxl7")
 shader_parameter/amount = 0.2
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n6a6k"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x8vrx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_7waim")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_22s56")
+
+[node name="grass" type="Sprite2D" parent="."]
+position = Vector2(572, 322)
+scale = Vector2(3, 3)
+texture = ExtResource("2_x37w6")
+region_rect = Rect2(2.81567, -2.62573, 477.297, 276.715)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -83,18 +101,6 @@ offset = Vector2(576, 0)
 [node name="frame" type="AnimatedSprite2D" parent="CanvasLayer/level_bar"]
 sprite_frames = SubResource("SpriteFrames_8ffde")
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-script = ExtResource("3_v3d3f")
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(0, 810)
-
-[node name="grass" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(572, 322)
-scale = Vector2(3, 3)
-texture = ExtResource("2_x37w6")
-region_rect = Rect2(2.81567, -2.62573, 477.297, 276.715)
-
 [node name="FX" type="ColorRect" parent="."]
 z_index = 4096
 material = SubResource("ShaderMaterial_x61us")
@@ -109,17 +115,12 @@ offset_bottom = 716.0
 anchor_mode = 0
 script = ExtResource("2_n5mm0")
 
-[node name="player" parent="." instance=ExtResource("6_ffk3w")]
+[node name="player" type="Area2D" parent="."]
+position = Vector2(568, 414)
+script = ExtResource("11_3l6g6")
 
-[node name="player2" parent="." instance=ExtResource("6_ffk3w")]
-modulate = Color(0, 0, 0, 0.552941)
-z_index = -10
-z_as_relative = false
-position = Vector2(563, 612)
-shadow = true
+[node name="collider" type="CollisionShape2D" parent="player"]
+shape = SubResource("RectangleShape2D_n6a6k")
 
-[node name="out_R" parent="." instance=ExtResource("10_6bxjx")]
-position = Vector2(1210, 8)
-
-[node name="out_R2" parent="." instance=ExtResource("10_6bxjx")]
-position = Vector2(-98, 8)
+[node name="sprite" type="AnimatedSprite2D" parent="player"]
+sprite_frames = SubResource("SpriteFrames_x8vrx")
