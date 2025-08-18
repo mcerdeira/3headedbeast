@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://deatofa4fypks"]
+
+[ext_resource type="Script" path="res://scenes/item_xp.gd" id="1_1csmm"]
+[ext_resource type="Script" path="res://scenes/item_xp_3d.gd" id="1_fc8k5"]
+[ext_resource type="PackedScene" uid="uid://d01537gj6q2su" path="res://gltf/diamond_teamRed.gltf.glb" id="1_yd66s"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8yle8"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yurxi"]
+radius = 12.0416
+
+[node name="ItemXP" type="Area2D"]
+script = ExtResource("1_1csmm")
+
+[node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = SubResource("ViewportTexture_8yle8")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yurxi")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+own_world_3d = true
+transparent_bg = true
+
+[node name="ItemXP3D" type="Node3D" parent="SubViewport"]
+script = ExtResource("1_fc8k5")
+
+[node name="diamond_teamRed_gltf" parent="SubViewport/ItemXP3D" instance=ExtResource("1_yd66s")]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport/ItemXP3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport/ItemXP3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

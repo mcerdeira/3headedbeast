@@ -7,7 +7,8 @@ var FULLSCREEN = false
 var MAIN_THEME = null
 var scrolling_speed_total = 100
 var scrolling_speed = scrolling_speed_total
-var current_level_max = 100.0
+var current_lvl = 1.0
+var current_level_max = 5.0
 var current_level_val = 0.0
 #Stats
 var sword_ttl = 5.0
@@ -31,7 +32,14 @@ func _ready():
 	init_vars()
 	Music.play(MAIN_THEME, 0.0)
 	
-func _physics_process(delta: float) -> void:		
+func check_levelup():
+	Global.current_level_val += 1
+	if Global.current_level_val >= Global.current_level_max:
+		Global.current_lvl += 1
+		Global.current_level_val = 0
+		Global.current_level_max *= 2.3
+	
+func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("toggle_fullscreen"):
 		Global.FULLSCREEN = !Global.FULLSCREEN
 		if Global.FULLSCREEN:

@@ -1,9 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://45vnhs4gnhxp"]
+[gd_scene load_steps=5 format=3 uid="uid://45vnhs4gnhxp"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_1gihn"]
-[ext_resource type="PackedScene" uid="uid://cxk1g6ikkyimi" path="res://scenes/sword.tscn" id="2_56n6l"]
 [ext_resource type="Texture2D" uid="uid://gh6jui078jqu" path="res://sprites/char_spr_0.png" id="2_u33os"]
-[ext_resource type="PackedScene" uid="uid://26fh3sk6j3wm" path="res://scenes/tongue.tscn" id="3_xt2q8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x8vrx"]
 animations = [{
@@ -22,12 +20,8 @@ size = Vector2(30, 31)
 [node name="player" type="Area2D"]
 script = ExtResource("1_1gihn")
 
-[node name="sword" parent="." instance=ExtResource("2_56n6l")]
-
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_x8vrx")
-
-[node name="tongue" parent="." instance=ExtResource("3_xt2q8")]
 
 [node name="collider" type="CollisionShape2D" parent="."]
 position = Vector2(0, -0.5)

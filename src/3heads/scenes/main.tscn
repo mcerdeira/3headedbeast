@@ -88,6 +88,15 @@ offset = Vector2(576, 0)
 [node name="frame" type="AnimatedSprite2D" parent="CanvasLayer/level_bar"]
 sprite_frames = SubResource("SpriteFrames_8ffde")
 
+[node name="lbl_lvl" type="Label" parent="CanvasLayer/level_bar"]
+offset_left = -562.0
+offset_top = -27.0
+offset_right = 264.0
+offset_bottom = 25.0
+theme_override_fonts/font = ExtResource("2_6ff2e")
+theme_override_font_sizes/font_size = 46
+text = "LVL: 0"
+
 [node name="FX" type="ColorRect" parent="."]
 z_index = 4096
 material = SubResource("ShaderMaterial_x61us")
@@ -103,4 +112,5 @@ anchor_mode = 0
 script = ExtResource("2_n5mm0")
 
 [node name="player" parent="." instance=ExtResource("12_me82t")]
+z_index = 90
 position = Vector2(320, 320)

@@ -11,6 +11,7 @@ var gun_obj = preload("res://scenes/gun.tscn")
 var done = false
 
 func _ready() -> void:
+	add_to_group("player_head")
 	position_prev = global_position
 	rotation_prev = $sprite.rotation_degrees
 	
@@ -19,14 +20,15 @@ func set_color(color):
 	$sprite/sprite2.animation = color
 
 func _physics_process(delta):
-	if !done:
-		done = true
-		for i in range(10):
-			var g = gun_obj.instantiate()
-			g.global_position = global_position + Vector2(-32 * i, 0)
-			g.kind = Global.pick_random(["blue", "green", "purple", "yellow"])
-			get_parent().add_child(g)
-			body.append(g)
+	#DEBUG ONLY
+	#if !done:
+		#done = true
+		#for i in range(10):
+			#var g = gun_obj.instantiate()
+			#g.global_position = global_position + Vector2(-32 * i, 0)
+			#g.kind = Global.pick_random(["blue", "green", "purple", "yellow"])
+			#get_parent().add_child(g)
+			#body.append(g)
 	
 	if direction != Vector2.RIGHT and Input.is_action_just_pressed("left"):
 		direction = Vector2.LEFT
