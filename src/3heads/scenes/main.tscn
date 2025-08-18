@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d33j7xixk1g38"]
+[gd_scene load_steps=16 format=3 uid="uid://d33j7xixk1g38"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_22s56"]
 [ext_resource type="Shader" path="res://scenes/fx.gdshader" id="1_hrxl7"]
@@ -6,12 +6,12 @@
 [ext_resource type="Script" path="res://scenes/main_camera.gd" id="2_n5mm0"]
 [ext_resource type="Texture2D" uid="uid://bttingm14pgjj" path="res://sprites/grass.png" id="2_x37w6"]
 [ext_resource type="Script" path="res://scenes/lbl_gameover.gd" id="3_dtqu1"]
-[ext_resource type="PackedScene" uid="uid://bix47by45g66p" path="res://scenes/shaker.tscn" id="4_6t3fy"]
+[ext_resource type="PackedScene" path="res://scenes/shaker.tscn" id="4_6t3fy"]
 [ext_resource type="Script" path="res://scenes/level_bar.gd" id="4_bpoox"]
 [ext_resource type="Texture2D" uid="uid://dgswnal4gpmke" path="res://sprites/level_bar1.png" id="4_xff7f"]
 [ext_resource type="Texture2D" uid="uid://bjs7asi3xoxxv" path="res://sprites/level_bar2.png" id="5_8hwpj"]
-[ext_resource type="Script" path="res://scenes/player.gd" id="11_3l6g6"]
-[ext_resource type="Texture2D" uid="uid://gh6jui078jqu" path="res://sprites/char_spr_0.png" id="11_7waim"]
+[ext_resource type="PackedScene" uid="uid://45vnhs4gnhxp" path="res://scenes/player.tscn" id="12_me82t"]
+[ext_resource type="PackedScene" uid="uid://d3shn52hu301r" path="res://scenes/gun.tscn" id="13_tnwcy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0qvyu"]
 animations = [{
@@ -38,19 +38,6 @@ animations = [{
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x61us"]
 shader = ExtResource("1_hrxl7")
 shader_parameter/amount = 0.2
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n6a6k"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_x8vrx"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("11_7waim")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_22s56")
@@ -115,12 +102,7 @@ offset_bottom = 716.0
 anchor_mode = 0
 script = ExtResource("2_n5mm0")
 
-[node name="player" type="Area2D" parent="."]
-position = Vector2(568, 414)
-script = ExtResource("11_3l6g6")
+[node name="gun" parent="." instance=ExtResource("13_tnwcy")]
+position = Vector2(536, 414)
 
-[node name="collider" type="CollisionShape2D" parent="player"]
-shape = SubResource("RectangleShape2D_n6a6k")
-
-[node name="sprite" type="AnimatedSprite2D" parent="player"]
-sprite_frames = SubResource("SpriteFrames_x8vrx")
+[node name="player" parent="." instance=ExtResource("12_me82t")]
