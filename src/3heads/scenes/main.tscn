@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d33j7xixk1g38"]
+[gd_scene load_steps=15 format=3 uid="uid://d33j7xixk1g38"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_22s56"]
 [ext_resource type="Shader" path="res://scenes/fx.gdshader" id="1_hrxl7"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://dgswnal4gpmke" path="res://sprites/level_bar1.png" id="4_xff7f"]
 [ext_resource type="Texture2D" uid="uid://bjs7asi3xoxxv" path="res://sprites/level_bar2.png" id="5_8hwpj"]
 [ext_resource type="PackedScene" uid="uid://45vnhs4gnhxp" path="res://scenes/player.tscn" id="12_me82t"]
-[ext_resource type="PackedScene" uid="uid://d3shn52hu301r" path="res://scenes/gun.tscn" id="13_tnwcy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0qvyu"]
 animations = [{
@@ -43,6 +42,7 @@ shader_parameter/amount = 0.2
 script = ExtResource("1_22s56")
 
 [node name="grass" type="Sprite2D" parent="."]
+z_index = -4096
 position = Vector2(572, 322)
 scale = Vector2(3, 3)
 texture = ExtResource("2_x37w6")
@@ -76,7 +76,7 @@ vertical_alignment = 1
 script = ExtResource("3_dtqu1")
 
 [node name="level_bar" type="Node2D" parent="CanvasLayer"]
-position = Vector2(577, 38)
+position = Vector2(576, 33)
 script = ExtResource("4_bpoox")
 
 [node name="bar" type="AnimatedSprite2D" parent="CanvasLayer/level_bar"]
@@ -102,7 +102,5 @@ offset_bottom = 716.0
 anchor_mode = 0
 script = ExtResource("2_n5mm0")
 
-[node name="gun" parent="." instance=ExtResource("13_tnwcy")]
-position = Vector2(536, 414)
-
 [node name="player" parent="." instance=ExtResource("12_me82t")]
+position = Vector2(320, 320)

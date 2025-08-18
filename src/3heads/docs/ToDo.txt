@@ -1,6 +1,6 @@
 blue: balas basicas derecho
-red: balas que salen en disparos radiales
+green:  balas que salen en disparos cruz
+purple: balas que salen en disparo radial
 cyan: balas teleridigidas
-green: laser
-purple: boomerang
+red: laser
 yellow: zona de daño radial 

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://lturuc2p41v0"]
+
+[ext_resource type="Texture2D" uid="uid://gby5r8jbdsca" path="res://sprites/tongue.png" id="1_1qwnk"]
+[ext_resource type="Script" path="res://scenes/tongue_part.gd" id="1_fpafn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m27x4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1qwnk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f3mmx"]
+radius = 15.1327
+
+[node name="TonguePart" type="Area2D"]
+z_index = -1
+script = ExtResource("1_fpafn")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_m27x4")
+
+[node name="collider" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_f3mmx")

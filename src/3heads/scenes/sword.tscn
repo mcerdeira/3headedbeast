@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxk1g6ikkyimi"]
+
+[ext_resource type="Script" path="res://scenes/sword.gd" id="1_ikxpq"]
+[ext_resource type="Texture2D" uid="uid://btqjch075c3tq" path="res://sprites/sword.png" id="2_ysbb5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sfovs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ysbb5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_00q30"]
+size = Vector2(14, 64)
+
+[node name="sword" type="Area2D"]
+rotation = 6.28319
+script = ExtResource("1_ikxpq")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sfovs")
+offset = Vector2(0, -32)
+
+[node name="collider" type="CollisionShape2D" parent="."]
+position = Vector2(-0.000143282, -32)
+shape = SubResource("RectangleShape2D_00q30")

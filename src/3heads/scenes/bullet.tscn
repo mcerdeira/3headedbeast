@@ -39,7 +39,6 @@ scale = Vector2(0.5, 0.5)
 script = ExtResource("1_g525b")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -33)
 sprite_frames = SubResource("SpriteFrames_jcdvp")
 animation = &"purple"
 

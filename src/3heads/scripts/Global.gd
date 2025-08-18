@@ -9,6 +9,18 @@ var scrolling_speed_total = 100
 var scrolling_speed = scrolling_speed_total
 var current_level_max = 100.0
 var current_level_val = 0.0
+#Stats
+var sword_ttl = 5.0
+var tongue_ttl = 3.0
+var bullet_ttl = 3.0
+
+var blue_ttl_total = 1.3
+var green_ttl_total = 2.3
+var purple_ttl_total = 3.5
+
+var blue_dmg = 7
+var green_dmg = 7
+var purple_dmg = 7
 
 func init_vars():
 	#MAIN_THEME = load("res://music/Night On Bald Mountain.mp3")
