@@ -1,0 +1,121 @@
+[gd_scene load_steps=12 format=3 uid="uid://dg0rhu115ec2b"]
+
+[ext_resource type="Texture2D" uid="uid://utfy1bpm3u07" path="res://sprites/blockG_spr_1.png" id="1_j14xf"]
+[ext_resource type="Script" path="res://scenes/option.gd" id="2_541v8"]
+[ext_resource type="FontFile" uid="uid://bsl346i62og0p" path="res://fonts/Brunson.ttf" id="2_blov5"]
+[ext_resource type="Texture2D" uid="uid://b6kyj7c6tjr8b" path="res://sprites/blockD_spr_0.png" id="3_vbmvv"]
+[ext_resource type="Texture2D" uid="uid://gby5r8jbdsca" path="res://sprites/tongue.png" id="4_4fth6"]
+[ext_resource type="Texture2D" uid="uid://uu2xc5eng3l7" path="res://sprites/blockB_spr_0.png" id="5_asg7j"]
+[ext_resource type="Texture2D" uid="uid://gh6jui078jqu" path="res://sprites/char_spr_0.png" id="6_bx1bk"]
+[ext_resource type="Texture2D" uid="uid://dmjx5tl5e5g1i" path="res://sprites/blockA_spr_0.png" id="7_slpop"]
+[ext_resource type="Texture2D" uid="uid://btqjch075c3tq" path="res://sprites/sword.png" id="8_bs5pv"]
+[ext_resource type="Texture2D" uid="uid://m6sefjeeqls7" path="res://sprites/blockC_spr_0.png" id="9_mic07"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y2xe1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_vbmvv")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"cyan",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_4fth6")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_asg7j")
+}],
+"loop": true,
+"name": &"green",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_bx1bk")
+}],
+"loop": true,
+"name": &"player",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_slpop")
+}],
+"loop": true,
+"name": &"purple",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_bs5pv")
+}],
+"loop": true,
+"name": &"sword",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_mic07")
+}],
+"loop": true,
+"name": &"yellow",
+"speed": 5.0
+}]
+
+[node name="option" type="Sprite2D"]
+process_mode = 3
+position = Vector2(239, 342)
+texture = ExtResource("1_j14xf")
+script = ExtResource("2_541v8")
+
+[node name="lbl_title" type="Label" parent="."]
+process_mode = 3
+offset_left = -128.0
+offset_top = -256.0
+offset_right = 128.0
+offset_bottom = -214.0
+theme_override_fonts/font = ExtResource("2_blov5")
+theme_override_font_sizes/font_size = 36
+text = "Titulo"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="lbl_description" type="Label" parent="."]
+process_mode = 3
+offset_left = -125.0
+offset_top = -184.0
+offset_right = 124.0
+offset_bottom = 19.0
+text = "ioioioi oioioio ioio iosdd
+saioasi doasidoas idoa isdoasid oasida sodasi od"
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="icon" type="AnimatedSprite2D" parent="."]
+process_mode = 3
+position = Vector2(0, 64)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_y2xe1")
+animation = &"green"
+
+[node name="btn_select" type="Button" parent="."]
+offset_left = -119.0
+offset_top = 197.0
+offset_right = 124.0
+offset_bottom = 246.0
+text = "SELECT"
+
+[connection signal="pressed" from="btn_select" to="." method="_on_btn_select_pressed"]

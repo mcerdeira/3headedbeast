@@ -8,9 +8,12 @@ var body = []
 var position_prev = null
 var rotation_prev = null
 var gun_obj = preload("res://scenes/gun.tscn")
+var sword_obj = preload("res://scenes/sword.tscn")
+var fire_obj = preload("res://scenes/tongue.tscn")
 var done = false
 
 func _ready() -> void:
+	Global.player_obj = self
 	add_to_group("player_head")
 	position_prev = global_position
 	rotation_prev = $sprite.rotation_degrees
@@ -18,6 +21,21 @@ func _ready() -> void:
 func set_color(color):
 	$sprite.animation = color
 	$sprite/sprite2.animation = color
+	
+func add_part(_kind):
+	var g = gun_obj.instantiate()
+	g.global_position = global_position + Vector2(-32 * (body.size() + 1), 0)
+	g.kind = _kind
+	get_parent().add_child(g)
+	body.append(g)
+	
+func add_sword():
+	var sword = sword_obj.instantiate()
+	add_child(sword)
+	
+func add_fire():
+	var fire = fire_obj.instantiate()
+	add_child(fire)
 
 func _physics_process(delta):
 	#DEBUG ONLY

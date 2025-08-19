@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d33j7xixk1g38"]
+[gd_scene load_steps=16 format=3 uid="uid://d33j7xixk1g38"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_22s56"]
 [ext_resource type="Shader" path="res://scenes/fx.gdshader" id="1_hrxl7"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scenes/level_bar.gd" id="4_bpoox"]
 [ext_resource type="Texture2D" uid="uid://dgswnal4gpmke" path="res://sprites/level_bar1.png" id="4_xff7f"]
 [ext_resource type="Texture2D" uid="uid://bjs7asi3xoxxv" path="res://sprites/level_bar2.png" id="5_8hwpj"]
+[ext_resource type="Script" path="res://scenes/selector.gd" id="8_mxi0r"]
 [ext_resource type="PackedScene" uid="uid://45vnhs4gnhxp" path="res://scenes/player.tscn" id="12_me82t"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0qvyu"]
@@ -96,6 +97,38 @@ offset_bottom = 25.0
 theme_override_fonts/font = ExtResource("2_6ff2e")
 theme_override_font_sizes/font_size = 46
 text = "LVL: 0"
+
+[node name="Selector" type="Node2D" parent="CanvasLayer"]
+process_mode = 3
+position = Vector2(27, 10)
+script = ExtResource("8_mxi0r")
+
+[node name="shadow" type="ColorRect" parent="CanvasLayer/Selector"]
+process_mode = 3
+offset_left = 71.0
+offset_top = 21.0
+offset_right = 1063.0
+offset_bottom = 631.0
+color = Color(0, 0, 0, 0.552941)
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Selector"]
+process_mode = 3
+offset_left = 49.0
+offset_top = -5.0
+offset_right = 1042.0
+offset_bottom = 613.0
+color = Color(1, 0.443137, 1, 1)
+
+[node name="lbl_title" type="Label" parent="CanvasLayer/Selector"]
+process_mode = 3
+offset_left = 49.0
+offset_top = -18.0
+offset_right = 1042.0
+offset_bottom = 90.0
+theme_override_fonts/font = ExtResource("2_6ff2e")
+theme_override_font_sizes/font_size = 96
+text = "LEVEL UP!"
+horizontal_alignment = 1
 
 [node name="FX" type="ColorRect" parent="."]
 z_index = 4096
