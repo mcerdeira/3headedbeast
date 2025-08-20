@@ -1,8 +1,4 @@
 extends Node2D
-var ttl = 5.0
-var ttl_total = 9.0
-var ttl_enemy = 1.0
-var ttl_enemy_total = 3.0
 var item_obj = preload("res://scenes/item_xp.tscn")
 
 func _ready() -> void:
@@ -18,9 +14,9 @@ func _physics_process(delta: float) -> void:
 			Global.GAMEOVER = false
 			get_tree().reload_current_scene()
 	else:
-		ttl -= 1 * delta
-		if ttl <= 0:
-			ttl = ttl_total
+		Global.ttl -= 1 * delta
+		if Global.ttl <= 0:
+			Global.ttl = Global.ttl_total
 			#1152(36)x648
 			var item = item_obj.instantiate()
 			var x = randi_range(2, 35) * 32

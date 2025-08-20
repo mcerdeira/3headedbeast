@@ -14,12 +14,15 @@ func _ready() -> void:
 	$sprite.animation = kind
 	if kind == "blue":
 		ttl_total = Global.blue_ttl_total
+		ttl = ttl_total
 		speed = 800
 	elif kind == "green":
 		ttl_total = Global.green_ttl_total
+		ttl = ttl_total
 		speed = 800
 	elif kind == "purple":
 		ttl_total = Global.purple_ttl_total
+		ttl = ttl_total
 		speed = 300
 	elif kind == "yellow":
 		var sword = sword_obj.instantiate()
@@ -46,7 +49,7 @@ func shoot():
 			bullet.set_color($sprite.animation)
 			bullet.speed = speed
 			bullet.dmg = Global.blue_dmg
-			get_parent().get_parent().add_child(bullet)
+			get_parent().add_child(bullet)
 		elif kind == "green":
 			var bullet = bullet_obj.instantiate()
 			bullet.global_position = global_position
@@ -54,7 +57,7 @@ func shoot():
 			bullet.speed = speed
 			bullet.set_color($sprite.animation)
 			bullet.dmg = Global.green_dmg
-			get_parent().get_parent().add_child(bullet)
+			get_parent().add_child(bullet)
 			
 			bullet = bullet_obj.instantiate()
 			bullet.global_position = global_position
@@ -62,7 +65,7 @@ func shoot():
 			bullet.speed = speed
 			bullet.set_color($sprite.animation)
 			bullet.dmg = Global.green_dmg
-			get_parent().get_parent().add_child(bullet)
+			get_parent().add_child(bullet)
 			
 			bullet = bullet_obj.instantiate()
 			bullet.global_position = global_position
@@ -70,7 +73,7 @@ func shoot():
 			bullet.speed = speed
 			bullet.set_color($sprite.animation)
 			bullet.dmg = Global.green_dmg
-			get_parent().get_parent().add_child(bullet)
+			get_parent().add_child(bullet)
 			
 			bullet = bullet_obj.instantiate()
 			bullet.global_position = global_position
@@ -78,7 +81,7 @@ func shoot():
 			bullet.speed = speed
 			bullet.set_color($sprite.animation)
 			bullet.dmg = Global.green_dmg
-			get_parent().get_parent().add_child(bullet)
+			get_parent().add_child(bullet)
 		if kind == "purple":
 			var bullet = bullet_obj.instantiate()
 			bullet.global_position = global_position
@@ -86,7 +89,7 @@ func shoot():
 			bullet.speed = speed
 			bullet.set_color($sprite.animation)
 			bullet.dmg = Global.purple_dmg
-			get_parent().get_parent().add_child(bullet)
+			get_parent().add_child(bullet)
 			
 			bullet = bullet_obj.instantiate()
 			bullet.global_position = global_position
@@ -94,7 +97,7 @@ func shoot():
 			bullet.speed = speed
 			bullet.set_color($sprite.animation)
 			bullet.dmg = Global.purple_dmg
-			get_parent().get_parent().add_child(bullet)
+			get_parent().add_child(bullet)
 			
 			bullet = bullet_obj.instantiate()
 			bullet.global_position = global_position
@@ -102,7 +105,7 @@ func shoot():
 			bullet.speed = speed
 			bullet.set_color($sprite.animation)
 			bullet.dmg = Global.purple_dmg
-			get_parent().get_parent().add_child(bullet)
+			get_parent().add_child(bullet)
 			
 			bullet = bullet_obj.instantiate()
 			bullet.global_position = global_position
@@ -110,7 +113,7 @@ func shoot():
 			bullet.speed = speed
 			bullet.set_color($sprite.animation)
 			bullet.dmg = Global.purple_dmg
-			get_parent().get_parent().add_child(bullet)
+			get_parent().add_child(bullet)
 			
 			bullet = bullet_obj.instantiate()
 			bullet.global_position = global_position
@@ -118,7 +121,7 @@ func shoot():
 			bullet.speed = speed
 			bullet.set_color($sprite.animation)
 			bullet.dmg = Global.purple_dmg
-			get_parent().get_parent().add_child(bullet)
+			get_parent().add_child(bullet)
 			
 			bullet = bullet_obj.instantiate()
 			bullet.global_position = global_position
@@ -126,7 +129,7 @@ func shoot():
 			bullet.speed = speed
 			bullet.set_color($sprite.animation)
 			bullet.dmg = Global.purple_dmg
-			get_parent().get_parent().add_child(bullet)
+			get_parent().add_child(bullet)
 			
 			bullet = bullet_obj.instantiate()
 			bullet.global_position = global_position
@@ -134,7 +137,7 @@ func shoot():
 			bullet.speed = speed
 			bullet.set_color($sprite.animation)
 			bullet.dmg = Global.purple_dmg
-			get_parent().get_parent().add_child(bullet)
+			get_parent().add_child(bullet)
 			
 			bullet = bullet_obj.instantiate()
 			bullet.global_position = global_position
@@ -142,7 +145,7 @@ func shoot():
 			bullet.speed = speed
 			bullet.set_color($sprite.animation)
 			bullet.dmg = Global.purple_dmg
-			get_parent().get_parent().add_child(bullet)
+			get_parent().add_child(bullet)
 			
 			bullet = bullet_obj.instantiate()
 			bullet.global_position = global_position
@@ -150,7 +153,7 @@ func shoot():
 			bullet.speed = speed
 			bullet.set_color($sprite.animation)
 			bullet.dmg = Global.purple_dmg
-			get_parent().get_parent().add_child(bullet)
+			get_parent().add_child(bullet)
 			
 			bullet = bullet_obj.instantiate()
 			bullet.global_position = global_position
@@ -158,7 +161,7 @@ func shoot():
 			bullet.speed = speed
 			bullet.set_color($sprite.animation)
 			bullet.dmg = Global.purple_dmg
-			get_parent().get_parent().add_child(bullet)
+			get_parent().add_child(bullet)
 			
 			bullet = bullet_obj.instantiate()
 			bullet.global_position = global_position
@@ -166,7 +169,7 @@ func shoot():
 			bullet.speed = speed
 			bullet.set_color($sprite.animation)
 			bullet.dmg = Global.purple_dmg
-			get_parent().get_parent().add_child(bullet)
+			get_parent().add_child(bullet)
 			
 			bullet = bullet_obj.instantiate()
 			bullet.global_position = global_position
@@ -174,4 +177,4 @@ func shoot():
 			bullet.speed = speed
 			bullet.set_color($sprite.animation)
 			bullet.dmg = Global.purple_dmg
-			get_parent().get_parent().add_child(bullet)
+			get_parent().add_child(bullet)

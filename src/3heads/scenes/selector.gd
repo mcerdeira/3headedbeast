@@ -19,7 +19,14 @@ func show_options():
 	
 	for i in range(3):
 		opt[i].global_position = Vector2(pos_x[i], pos_y)
-		items.shuffle()
-		opt[i].set_item(items.pop_back())
-		add_child(opt[i])
+		
+		while true:
+			items.shuffle()
+			var curr = items.pop_back()
+			if curr["depends"].call():
+				opt[i].set_item(curr)
+				add_child(opt[i])
+				break;
+		
+
 	

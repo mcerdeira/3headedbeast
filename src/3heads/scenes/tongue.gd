@@ -1,6 +1,7 @@
 extends Node2D
 var tongue_part_obj = preload("res://scenes/tongue_part.tscn")
 var ttl = Global.tongue_ttl
+var kind = "fire"
 var shoot = false
 
 func _physics_process(delta: float) -> void:

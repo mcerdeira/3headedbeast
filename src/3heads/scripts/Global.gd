@@ -9,8 +9,14 @@ var MAIN_THEME = null
 var scrolling_speed_total = 100
 var scrolling_speed = scrolling_speed_total
 var current_lvl = 1.0
-var current_level_max = 5.0
+var current_level_max = 3.0
 var current_level_val = 0.0
+
+var ttl = 1.0
+var ttl_total = 9.0
+var ttl_enemy = 1.0
+var ttl_enemy_total = 3.0
+
 #Effect duration
 var sword_ttl = 5.0
 var tongue_ttl = 3.0
@@ -32,75 +38,85 @@ var Items = []
 
 ## FIRE RATE ITEMS ##
 var item_blue_ttl = {
-	"title": "Blue Fire rate--",
-	"description": "Decreases fire rate to blue parts.",
+	"title": "Blue Fire rate -10%",
+	"description": "Decreases 10% fire rate of blue parts.",
 	"icon": "blue",
-	"action": Callable(self, "add_blue_ttl")
+	"action": func(): self.add_blue_ttl(),
+	"depends": func(): return self.has_gun("blue")
 }
 var item_green_ttl= {
-	"title": "Green Fire rate--",
-	"description": "Decreases fire rate to blue parts.",
+	"title": "Green Fire rate -10%",
+	"description": "Decreases 10% fire rate of green parts.",
 	"icon": "green",
-	"action": Callable(self, "add_green_ttl")
+	"action": func(): self.add_green_ttl(),
+	"depends": func(): return self.has_gun("green")
 }
 var item_purple_ttl = {
-	"title": "Purple Fire rate--",
-	"description": "Decreases purple rate to blue parts.",
+	"title": "Purple Fire rate -10%",
+	"description": "Decreases 10% purple rate of purple parts.",
 	"icon": "purple",
-	"action": Callable(self, "add_purple_ttl")
+	"action": func(): self.add_purple_ttl(),
+	"depends": func(): return self.has_gun("purple")
 }
 
 ## TIME ITEMS ##
 var item_sword_ttl = {
-	"title": "Sword Duration++",
-	"description": "Increases duration to swords.",
+	"title": "Sword Duration +10%",
+	"description": "Increases 10% duration of swords.",
 	"icon": "player",
-	"action": Callable(self, "add_sword_ttl")
+	"action": func(): self.add_sword_ttl(),
+	"depends": func(): return self.has_gun("sword")
 }
 var item_tongue_ttl = {
-	"title": "Fire Duration++",
-	"description": "Increases duration to swords.",
+	"title": "Fire Duration +10%",
+	"description": "Increases 10% duration of fire.",
 	"icon": "player",
-	"action": Callable(self, "add_fire_ttl")
+	"action": func(): self.add_fire_ttl(),
+	"depends": func(): return self.has_gun("fire")
 }
 var item_bullet_ttl = {
-	"title": "Bullets Duration++",
-	"description": "Increases duration to bullets.",
+	"title": "Bullets Duration +10%",
+	"description": "Increases 10% duration of bullets.",
 	"icon": "player",
-	"action": Callable(self, "add_bullet_ttl")
+	"action": func(): self.add_bullet_ttl(),
+	"depends": func(): return self.has_gun(["blue", "green", "purple"])
 }
-
 
 ## DMG ITEMS ##
 var item_blue_dmg = {
-	"title": "Blue Dmg++",
-	"description": "Increases damage to blue parts.",
+	"title": "Blue Dmg +10%",
+	"description": "Increases damage 10% of blue parts.",
 	"icon": "blue",
-	"action": Callable(self, "add_blue_dmg")
+	"action": func(): self.add_blue_dmg(),
+	"depends": func(): return self.has_gun(["blue"])
 }
 var item_green_dmg = {
-	"title": "Green Dmg++",
-	"description": "Increases damage to green parts.",
+	"title": "Green Dmg +10%",
+	"description": "Increases damage 10% of green parts.",
 	"icon": "green",
-	"action": Callable(self, "add_green_dmg")
+	"action": func(): self.add_green_dmg(),
+	"depends": func(): return self.has_gun(["green"])
 }
 var item_purple_dmg = {
-	"title": "Purple Dmg++",
-	"description": "Increases damage to purple parts.",
+	"title": "Purple Dmg +10%",
+	"description": "Increases damage 10% of purple parts.",
 	"icon": "purple",
-	"action": Callable(self, "add_purple_dmg")
+	"action": func(): self.add_purple_dmg(),
+	"depends": func(): return self.has_gun(["purple"])
 }
 var item_sword_dmg = {
-	"title": "Sword Dmg++",
-	"description": "Increases damage to swords.",
+	"title": "Sword Dmg +10%",
+	"description": "Increases damage 10% of swords.",
 	"icon": "player",
-	"action": Callable(self, "add_sword_dmg")
+	"action": func(): self.add_sword_dmg(),
+	"depends": func(): return self.has_gun(["sword", "yellow"])
 }
 var item_fire_dmg = {
-	"title": "Fire Dmg++",
-	"description": "Increases damage to fire.",
+	"title": "Fire Dmg +10%",
+	"description": "Increases damage 10% of fire.",
 	"icon": "player",
-	"action": Callable(self, "add_fire_dmg")
+	"action": func(): self.add_fire_dmg(),
+	"depends": func(): return self.has_gun(["fire"])
 }
 
 ## ITEMS ##
@@ -108,50 +124,50 @@ var item_green = {
 	"title": "Green body part",
 	"description": "Cross spread shot.",
 	"icon": "green",
-	"action": Callable(self, "add_green")
+	"action": func(): self.add_part("green"),
+	"depends": func(): return true
 }
 var item_blue = {
 	"title": "Blue body part",
 	"description": "Shoots 1 bullet in random direction.",
 	"icon": "blue",
-	"action": Callable(self, "add_blue")
+	"action": func(): self.add_part("blue"),
+	"depends": func(): return true
 }
 var item_yellow = {
 	"title": "Yellow body part",
 	"description": "Uses a sword in a circled area.",
 	"icon": "yellow",
-	"action": Callable(self, "add_yellow")
+	"action": func(): self.add_part("yellow"),
+	"depends": func(): return true
 }
 var item_purple = {
 	"title": "Purple body part",
 	"description": "Radial spread shot.",
 	"icon": "purple",
-	"action": Callable(self, "add_purple")
+	"action": func(): self.add_part("purple"),
+	"depends": func(): return true
 }
 var item_sword = {
-	"title": "[Head] a sword",
+	"title": "[Head] + a sword",
 	"description": "Uses a sword in a circled area.",
 	"icon": "player",
-	"action": Callable(self, "add_sword")
+	"action": func(): self.add_sword(),
+	"depends": func(): return true
 }
 var item_fire = {
-	"title": "[Head] fire breath",
+	"title": "[Head] + fire breath",
 	"description": "Spits fire forward.",
 	"icon": "player",
-	"action": Callable(self, "add_fire")
+	"action": func(): self.add_fire(),
+	"depends": func(): return true
 }
 
-func add_green():
-	Global.player_obj.add_part("green")
-	
-func add_blue():
-	Global.player_obj.add_part("blue")
-	
-func add_yellow():
-	Global.player_obj.add_part("yellow")
-	
-func add_purple():
-	Global.player_obj.add_part("purple")
+func has_gun(what):
+	return Global.player_obj.has_gun(what)
+
+func add_part(color):
+	Global.player_obj.add_part(color)
 	
 func add_sword():
 	Global.player_obj.add_sword()
@@ -160,37 +176,37 @@ func add_fire():
 	Global.player_obj.add_fire()
 
 func add_blue_dmg():
-	Global.blue_dmg += 1
+	Global.blue_dmg += Global.blue_dmg * 0.1
 	
 func add_green_dmg():
-	Global.green_dmg += 1
+	Global.green_dmg += Global.green_dmg * 0.1
 	
 func add_purple_dmg():
-	Global.purple_dmg += 1
+	Global.purple_dmg += Global.purple_dmg * 0.1
 	
 func add_sword_dmg():
-	Global.sword_dmg += 1
+	Global.sword_dmg += Global.sword_dmg * 0.1
 	
 func add_fire_dmg():
-	Global.fire_dmg += 1
+	Global.fire_dmg += Global.fire_dmg * 0.1
 	
 func add_sword_ttl():
-	Global.sword_ttl += 1
+	Global.sword_ttl += Global.sword_ttl * 0.1
 	
 func add_fire_ttl():
-	Global.tongue_ttl += 1
+	Global.tongue_ttl += Global.tongue_ttl * 0.1
 	
 func add_bullet_ttl():
-	Global.bullet_ttl += 1
+	Global.bullet_ttl += Global.bullet_ttl * 0.1
 
 func add_blue_ttl():
-	Global.blue_ttl_total -= 0.1
+	Global.blue_ttl_total -= Global.blue_ttl_total * 0.1
 	
 func add_green_ttl():
-	Global.green_ttl_total -= 0.1
+	Global.green_ttl_total -= Global.green_ttl_total * 0.1
 	
 func add_purple_ttl():
-	Global.purple_ttl_total -= 0.1
+	Global.purple_ttl_total -= Global.purple_ttl_total * 0.1
 	
 func init_vars():
 	#MAIN_THEME = load("res://music/Night On Bald Mountain.mp3")
@@ -219,10 +235,11 @@ func _ready():
 	
 func check_levelup():
 	Global.current_level_val += 1
+	Global.ttl = 0
 	if Global.current_level_val >= Global.current_level_max:
 		Global.current_lvl += 1
 		Global.current_level_val = 0
-		Global.current_level_max *= 2.3
+		Global.current_level_max *= 1.1
 		Global.selector_obj.show_options()
 	
 func _physics_process(delta: float) -> void:

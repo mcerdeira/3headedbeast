@@ -68,6 +68,19 @@ func _physics_process(delta):
 		position_prev = global_position
 		rotation_prev = $sprite.rotation_degrees
 		ttl = ttl_total
+		
+func has_gun(what):
+	for w in what:
+		for b in body:
+			if w == b.kind:
+				return true
+	
+	var childs = get_children()
+	for w in what:
+		for c in childs:
+			if c.get("kind") and w == c.kind:
+				return true
+	return false
 
 func update_body():
 	var prev = position_prev

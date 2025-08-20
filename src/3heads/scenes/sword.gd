@@ -1,6 +1,7 @@
 extends Area2D
 var dmg = 1
 var ttl = Global.sword_ttl
+var kind = "sword"
 var shoot = false
 
 func _ready() -> void:
