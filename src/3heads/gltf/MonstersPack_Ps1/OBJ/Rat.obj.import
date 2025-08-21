@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://7uxuwmjg3fj5"
+path="res://.godot/imported/Rat.obj-bf19f395f033e180a183232c5c144331.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Rat.obj-bf19f395f033e180a183232c5c144331.mesh"]
+
+source_file="res://gltf/MonstersPack_Ps1/OBJ/Rat.obj"
+dest_files=["res://.godot/imported/Rat.obj-bf19f395f033e180a183232c5c144331.mesh", "res://.godot/imported/Rat.obj-bf19f395f033e180a183232c5c144331.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

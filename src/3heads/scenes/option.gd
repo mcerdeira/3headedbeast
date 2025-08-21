@@ -13,3 +13,4 @@ func select_this():
 func _on_btn_select_pressed() -> void:
 	select_this()
 	get_parent().done()
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)

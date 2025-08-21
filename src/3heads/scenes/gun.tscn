@@ -8,8 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://m6sefjeeqls7" path="res://sprites/blockC_spr_0.png" id="5_le1td"]
 [ext_resource type="Texture2D" uid="uid://cjc8ropnydbab" path="res://sprites/blockF_spr_0.png" id="6_43m0m"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_82cc0"]
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_dc6kg"]
 animations = [{
 "frames": [{
@@ -61,12 +59,15 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjrfj"]
+size = Vector2(28, 28)
+
 [node name="gun" type="Area2D"]
 script = ExtResource("1_e3meg")
-
-[node name="collider" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_82cc0")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dc6kg")
 animation = &"red"
+
+[node name="collider" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mjrfj")

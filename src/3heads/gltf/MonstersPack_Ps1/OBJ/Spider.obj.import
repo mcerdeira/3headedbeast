@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cuk44gdyqpa6x"
+path="res://.godot/imported/Spider.obj-6c1aa09e36fb9544066bc592dfecab21.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Spider.obj-6c1aa09e36fb9544066bc592dfecab21.mesh"]
+
+source_file="res://gltf/MonstersPack_Ps1/OBJ/Spider.obj"
+dest_files=["res://.godot/imported/Spider.obj-6c1aa09e36fb9544066bc592dfecab21.mesh", "res://.godot/imported/Spider.obj-6c1aa09e36fb9544066bc592dfecab21.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

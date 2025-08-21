@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/item_xp.gd" id="1_1csmm"]
 [ext_resource type="Script" path="res://scenes/item_xp_3d.gd" id="1_fc8k5"]
-[ext_resource type="PackedScene" uid="uid://d01537gj6q2su" path="res://gltf/diamond_teamRed.gltf.glb" id="1_yd66s"]
+[ext_resource type="PackedScene" uid="uid://byppvfgem40p2" path="res://gltf/diamond_teamRed.gltf.glb" id="1_yd66s"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_8yle8"]
 viewport_path = NodePath("SubViewport")

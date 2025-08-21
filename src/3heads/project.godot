@@ -25,6 +25,10 @@ Music="*res://scripts/Music.gd"
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 toggle_fullscreen={

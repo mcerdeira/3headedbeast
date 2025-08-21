@@ -11,6 +11,7 @@ var gun_obj = preload("res://scenes/gun.tscn")
 var sword_obj = preload("res://scenes/sword.tscn")
 var fire_obj = preload("res://scenes/tongue.tscn")
 var done = false
+var dir_changed = true
 
 func _ready() -> void:
 	Global.player_obj = self
@@ -24,7 +25,7 @@ func set_color(color):
 	
 func add_part(_kind):
 	var g = gun_obj.instantiate()
-	g.global_position = global_position + Vector2(-32 * (body.size() + 1), 0)
+	g.global_position = Vector2(global_position.x - (32 * (body.size() + 1)), global_position.y)
 	g.kind = _kind
 	get_parent().add_child(g)
 	body.append(g)
@@ -43,31 +44,38 @@ func _physics_process(delta):
 		#done = true
 		#for i in range(10):
 			#var g = gun_obj.instantiate()
-			#g.global_position = global_position + Vector2(-32 * i, 0)
+			#g.global_position = Vector2(global_position.x - (32 * (body.size() + 1)), global_position.y)
 			#g.kind = Global.pick_random(["blue", "green", "purple", "yellow"])
 			#get_parent().add_child(g)
 			#body.append(g)
 	
-	if direction != Vector2.RIGHT and Input.is_action_just_pressed("left"):
-		direction = Vector2.LEFT
-		$sprite.rotation_degrees = -180
-	elif direction != Vector2.LEFT and Input.is_action_just_pressed("right"):
-		direction = Vector2.RIGHT
-		$sprite.rotation_degrees = 0
-	elif direction != Vector2.DOWN and Input.is_action_just_pressed("up"):
-		direction = Vector2.UP
-		$sprite.rotation_degrees = 270
-	elif direction != Vector2.UP and Input.is_action_just_pressed("down"):
-		direction = Vector2.DOWN
-		$sprite.rotation_degrees = 90
+	if dir_changed:
+		if direction != Vector2.RIGHT and Input.is_action_just_pressed("left"):
+			dir_changed = false
+			direction = Vector2.LEFT
+			$sprite.rotation_degrees = -180
+		elif direction != Vector2.LEFT and Input.is_action_just_pressed("right"):
+			dir_changed = false
+			direction = Vector2.RIGHT
+			$sprite.rotation_degrees = 0
+		elif direction != Vector2.DOWN and Input.is_action_just_pressed("up"):
+			dir_changed = false
+			direction = Vector2.UP
+			$sprite.rotation_degrees = 270
+		elif direction != Vector2.UP and Input.is_action_just_pressed("down"):
+			dir_changed = false
+			direction = Vector2.DOWN
+			$sprite.rotation_degrees = 90
 
 	ttl -= 1 * delta
 	if ttl <= 0:
-		position += direction.normalized() * 32
-		update_body()
-		position_prev = global_position
-		rotation_prev = $sprite.rotation_degrees
-		ttl = ttl_total
+		if !Global.GAMEOVER:
+			position += direction.normalized() * 32
+			update_body()
+			position_prev = global_position
+			rotation_prev = $sprite.rotation_degrees
+			ttl = ttl_total
+			dir_changed = true
 		
 func has_gun(what):
 	for w in what:
@@ -90,3 +98,15 @@ func update_body():
 			b.update_body(prev, rot)
 			prev = b.position_prev
 			rot = b.rotation_prev
+
+func _on_area_entered(area: Area2D) -> void:
+	if !Global.GAMEOVER:
+		if area and area.is_in_group("player_body"):
+			Global.GAMEOVER = true
+			$deadAnim.start()
+
+func _on_dead_anim_timeout() -> void:
+	visible = !visible
+	for b in body:
+		if b:
+			b.visible = visible
