@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://3r8703ek8otb"]
+
+[ext_resource type="PackedScene" uid="uid://ctt73rvjcy1sg" path="res://scenes/spider.tscn" id="1_8po3j"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_63qt0"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Enemy" type="Area2D"]
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(0, 31)
+scale = Vector2(0.3, 0.3)
+texture = SubResource("ViewportTexture_63qt0")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+own_world_3d = true
+transparent_bg = true
+
+[node name="Node3D" type="Node3D" parent="SubViewport"]
+
+[node name="Spider" parent="SubViewport/Node3D" instance=ExtResource("1_8po3j")]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 32, 56)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport/Node3D"]

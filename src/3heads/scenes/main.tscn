@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://d33j7xixk1g38"]
+[gd_scene load_steps=17 format=3 uid="uid://d33j7xixk1g38"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_22s56"]
 [ext_resource type="Shader" path="res://scenes/fx.gdshader" id="1_hrxl7"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scenes/level_bar.gd" id="4_bpoox"]
 [ext_resource type="Texture2D" uid="uid://dgswnal4gpmke" path="res://sprites/level_bar1.png" id="4_xff7f"]
 [ext_resource type="Texture2D" uid="uid://bjs7asi3xoxxv" path="res://sprites/level_bar2.png" id="5_8hwpj"]
+[ext_resource type="PackedScene" uid="uid://3r8703ek8otb" path="res://scenes/Enemy.tscn" id="5_os6tv"]
 [ext_resource type="Script" path="res://scenes/selector.gd" id="8_mxi0r"]
 [ext_resource type="PackedScene" uid="uid://45vnhs4gnhxp" path="res://scenes/player.tscn" id="12_me82t"]
 
@@ -48,6 +49,9 @@ position = Vector2(572, 322)
 scale = Vector2(3, 3)
 texture = ExtResource("2_x37w6")
 region_rect = Rect2(2.81567, -2.62573, 477.297, 276.715)
+
+[node name="Enemy" parent="." instance=ExtResource("5_os6tv")]
+position = Vector2(198, 406)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -100,6 +104,7 @@ text = "LVL: 0"
 
 [node name="Selector" type="Node2D" parent="CanvasLayer"]
 process_mode = 3
+visible = false
 position = Vector2(27, 10)
 script = ExtResource("8_mxi0r")
 

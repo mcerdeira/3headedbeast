@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctt73rvjcy1sg"]
+
+[ext_resource type="PackedScene" uid="uid://bjvgw204grnu4" path="res://gltf/MonstersPack_Ps1/FBX/Spider.fbx" id="1_eoo0u"]
+
+[node name="Spider" instance=ExtResource("1_eoo0u")]
+
+[node name="Skeleton3D" parent="Spider_Armature" index="0"]
+bones/0/rotation = Quaternion(1, 0, 7.54979e-08, -1.59873e-29)
+bones/1/position = Vector3(0.0414447, 0.00492479, -0.00694036)
+bones/1/rotation = Quaternion(-2.34033e-07, 0.190963, 0.981597, 4.55295e-08)
+bones/1/scale = Vector3(2.21266, 2.21266, 2.21267)
+bones/3/rotation = Quaternion(-2.68816e-08, -3.17865e-08, -3.20453e-15, 1)
+bones/4/rotation = Quaternion(-2.17597e-15, 1, 5.21973e-08, -1.33158e-07)
+bones/5/rotation = Quaternion(4.96195e-08, 0.927978, -0.372636, 1.23568e-07)
+bones/7/rotation = Quaternion(-0.543957, 0.822705, -0.135689, 0.0941028)
+bones/8/rotation = Quaternion(0.111856, 0.126669, 0.0467471, 0.984509)
+bones/11/rotation = Quaternion(0.733261, -0.647131, 0.194543, -0.0755181)
+bones/12/rotation = Quaternion(-0.0860443, 0.194465, 0.180427, 0.960326)
+bones/13/rotation = Quaternion(-0.0111155, 0.00922747, -0.00150464, 0.999895)
+bones/15/rotation = Quaternion(0.8776, -0.382072, 0.276419, -0.0862087)
+bones/16/rotation = Quaternion(-0.3941, 0.18487, 0.371317, 0.820141)
+bones/19/rotation = Quaternion(0.543958, 0.822705, -0.135689, -0.0941033)
+bones/20/rotation = Quaternion(0.111856, -0.126669, -0.046747, 0.984509)
+bones/23/rotation = Quaternion(0.733261, 0.647131, -0.194543, -0.0755173)
+bones/24/rotation = Quaternion(-0.0860443, -0.194465, -0.180428, 0.960326)
+bones/25/rotation = Quaternion(-0.0111155, -0.00922727, 0.00150466, 0.999895)
+bones/27/rotation = Quaternion(0.8776, 0.382073, -0.276419, -0.0862087)
+bones/28/rotation = Quaternion(-0.3941, -0.18487, -0.371317, 0.820142)
